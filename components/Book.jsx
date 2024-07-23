@@ -1,8 +1,11 @@
 import React from 'react'
+import Nav from './Nav'
 
 function Book() {
   return (
-    <div>Book</div>
+    <div>
+        <Nav/>
+    </div>
   )
 }
 

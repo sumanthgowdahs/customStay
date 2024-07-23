@@ -1,8 +1,12 @@
 import React from 'react'
+import Nav from './Nav'
 
 function Customize() {
   return (
-    <div>Customize</div>
+    <div>
+      
+    <Nav/>
+    </div>
   )
 }
 
