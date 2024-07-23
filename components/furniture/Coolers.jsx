@@ -1,20 +1,27 @@
 import React, { useState } from 'react'
 import { coolers } from '../../data'
-import { addItemsCooler } from '../../slics'
-import { useDispatch } from 'react-redux'
+import { addItemsCooler, totalCartCount } from '../../slics'
+import { useDispatch, useSelector } from 'react-redux'
 
 function Coolers() {
+    let { cart } = useSelector((store) => store.task)
+
     let dispatch = useDispatch()
     let [icon,setIcon]= useState({})
     function buttonClick (itemsId) {
         let item = coolers.filter((i)=>{
             return i.id == itemsId
         })
-        dispatch(addItemsCooler(item))
-        setIcon((pState)=>({
-            ...pState,
-            [itemsId]:true
-        }))
+        let res = cart.cooler.some((i)=>i.id===itemsId)
+        if(!res){
+            dispatch(addItemsCooler(item))
+            dispatch(totalCartCount())
+            setIcon((pState)=>({
+                ...pState,
+                [itemsId]:true
+            }))
+        }
+        
     }
   return (
     <div className='component'>

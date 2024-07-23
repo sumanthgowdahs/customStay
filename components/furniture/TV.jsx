@@ -1,9 +1,11 @@
 import React, { useState } from 'react'
 import { tv } from '../../data'
-import { addItemsTv } from '../../slics'
-import { useDispatch } from 'react-redux'
+import { addItemsTv, totalCartCount } from '../../slics'
+import { useDispatch, useSelector } from 'react-redux'
 
 function TV() {
+    let { cart } = useSelector((store) => store.task)
+
     let dispatch=useDispatch()
     let [icon,setIcon]= useState({})
 
@@ -11,11 +13,16 @@ function TV() {
         let item = tv.filter((i)=>{
             return i.id == itemsId
         })
-        dispatch(addItemsTv(item))
-        setIcon((pState)=>({
-            ...pState,
-            [itemsId]:true
-        }))
+        let res = cart.tv.some((i)=>i.id===itemsId)
+        if(!res){
+            dispatch(addItemsTv(item))
+            dispatch(totalCartCount())
+            setIcon((pState)=>({
+                ...pState,
+                [itemsId]:true
+            }))
+        }
+        
     }
 
   return (

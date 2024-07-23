@@ -1,20 +1,27 @@
 import React, { useState } from 'react'
 import { diningTables } from '../../data'
-import { addItemsDining } from '../../slics'
-import { useDispatch } from 'react-redux'
+import { addItemsDining, totalCartCount } from '../../slics'
+import { useDispatch, useSelector } from 'react-redux'
 
 function Dining() {
+    let {cart}= useSelector((store)=>store.task)
     let dispatch = useDispatch()
     let [icon,setIcon] = useState({})
     function buttonClick(itemId) {
         let item = diningTables.filter((i) => {
             return i.id === itemId
         })
-        dispatch(addItemsDining(item))
-        setIcon((pState) => ({
-            ...pState,
-            [itemId]: true
-        }))
+        let res = cart.dining.some((i)=>i.id===itemId)
+        if(!res){
+            dispatch(addItemsDining(item))
+            dispatch(totalCartCount())
+    
+            setIcon((pState) => ({
+                ...pState,
+                [itemId]: true
+            }))
+        }
+        
     }
 
     

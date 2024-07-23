@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
 import { beds } from '../../data'
-import { addItemsBeds } from '../../slics'
-import { useDispatch } from 'react-redux'
+import { addItemsBeds, totalCartCount } from '../../slics'
+import { useDispatch, useSelector } from 'react-redux'
 
 
 function Bed() {
+    let { cart } = useSelector((store) => store.task)
     let dispatch = useDispatch()
     let [icon, setIcon] = useState({})
 
@@ -12,11 +13,17 @@ function Bed() {
         let item = beds.filter((i) => {
             return i.id === itemId
         })
-        dispatch(addItemsBeds(item))
-        setIcon((pState) => ({
-            ...pState,
-            [itemId]: true
-        }))
+        let res = cart.beds.some((i)=>i.id===itemId)
+        
+        if(!res){
+            dispatch(addItemsBeds(item))
+            dispatch(totalCartCount())
+            setIcon((pState) => ({
+                ...pState,
+                [itemId]: true
+            }))
+        }
+        
     }
 
 
@@ -40,7 +47,7 @@ function Bed() {
                                 <button onClick={() => {
                                     buttonClick(bed.id)
                                 }}>
-                                    {icon[bed.id]?<i class="fa-solid fa-check"></i> : <i class="fa-solid fa-plus"></i>}
+                                    {icon[bed.id] ? <i class="fa-solid fa-check"></i> : <i class="fa-solid fa-plus"></i>}
                                 </button>
 
                             </div>

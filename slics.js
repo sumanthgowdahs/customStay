@@ -8,7 +8,8 @@ let initialState = {
         dining :[],
         tv:[],
         cooler:[]
-    }
+    },
+    totalCartCount :0
 }
 
 let taskSlice = createSlice({
@@ -16,7 +17,6 @@ let taskSlice = createSlice({
     initialState,
     reducers:{
         addItemsHouse:(cState,action)=>{
-            console.log(action.payload);
             let [item] = action.payload
             cState.cart.House.push(item)
         },
@@ -35,9 +35,12 @@ let taskSlice = createSlice({
         addItemsCooler:(cState,action)=>{
             let [item] = action.payload
             cState.cart.cooler.push(item)
+        },
+        totalCartCount:(cState,action)=>{
+           cState.totalCartCount = cState.cart.House.length + cState.cart.beds.length + cState.cart.dining.length + cState.cart.tv.length + cState.cart.cooler.length
         }
     }
 })
 
-export let {addItemsHouse , addItemsBeds,addItemsDining,addItemsTv,addItemsCooler} = taskSlice.actions
+export let {addItemsHouse , addItemsBeds,addItemsDining,addItemsTv,addItemsCooler,totalCartCount} = taskSlice.actions
 export default taskSlice.reducer

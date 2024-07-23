@@ -1,7 +1,10 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 
+
 function Nav() {
+    let {totalCartCount} = useSelector((store)=>store.task)
   return (
    <nav className='nav'>
     <div className="logo">
@@ -13,7 +16,7 @@ function Nav() {
     <Link to={"/book"}>Book</Link>
     </div>
     <div className="cart">
-        <button>cart</button>
+        <button>{totalCartCount}</button>
     </div>
    </nav>
   )
