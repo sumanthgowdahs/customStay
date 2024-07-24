@@ -2,25 +2,26 @@
 
 *{
   margin: 0;padding: 0;box-sizing: border-box;
+  text-shadow: 2px 2px 5px black;
+
 }
 
 :root{
-  ---backgrountColor : #003B95;
+
+  ---backgrountColor : #2b225a;
+  
   ---font-color-one : "Inconsolata", monospace
 }
 .app{
   width: 100vw;
-  /* height: 100vh; */
   background-color: var(---backgrountColor) ;
 }
 
 .app nav{
   width: 100%;
-  /* height: 40%; */
   display: flex;
   align-items: center;
   padding: 20px;
-  /* background-color: red; */
   color: white;
 }
 .app .box1{
@@ -80,7 +81,7 @@ box-shadow: 0px 0px 5px black;
 .rooms{
   width: 100%;
   /* height: 100vh; */
-  padding: 30px;
+  padding: 10px;
   display: flex;
   flex-direction: column;
   gap: 30px;
@@ -93,15 +94,16 @@ box-shadow: 0px 0px 5px black;
 }
 
  .nav{
-/* background-color: red; */
 display: flex;
 align-items: center;
 justify-content: space-between;
 gap: 20px;
-background-color: #083374;
+background-color: var(---backgrountColor);
+z-index: 1;
 position: sticky;
 top: 0px;
 margin-top:0px ;
+border-bottom: 1px solid #1e183d;
 }
 .nav .links {
   display: flex;
@@ -110,7 +112,40 @@ margin-top:0px ;
 .nav a{
   color:white;
   text-decoration: none;
-  
+  transition:0.1s
+}
+.nav a:hover{
+  color: red;
+  text-shadow: none;
+}
+.nav a:active{
+  transform: scale(0.9);
+}
+.nav .cart button{
+  width: 30px;
+  height: 30px;
+  font-size: 20px;
+  position : relative;
+  border: none;
+  background: none;
+  color: white;
+
+}
+.nav .cart h6{
+  padding: 3px;
+  /* width:15px;
+  height: 15px; */
+  /* text-align: center; */
+  font-size: 10px;
+  background-color: red;
+  color: white;
+  border-radius: 50% ;
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  text-align: center;
+  align-content: center;
+  text-shadow: 1px 1px  1px black;
 }
 
 /*& ......................... */
@@ -150,6 +185,10 @@ margin-top:0px ;
 .component .itemList .card .img{
   width: 100%;
   height: 60%;
+  transition: 0.5s;
+}
+.component .itemList .card .img:hover{
+  transform: scale(1.1);
 }
 .component .itemList .card .img img{
   width: 100%;
@@ -159,7 +198,6 @@ margin-top:0px ;
   padding: 10px;
   width: 100%;
 height: 40%;
-  /* background-color: red; */
   position: relative;
 }
 .component .itemList .card .info span{
@@ -184,4 +222,171 @@ height: 40%;
 }
 .component .itemList .card button:active{
   transform: scale(0.9);
+}
+
+
+/* .............................. */
+
+.customize{
+  width: 100%;
+  padding: 10px;
+  font-family: var(---font-color-one);
+}
+
+.customize .container{
+  display: flex;
+  height: 100%;
+
+}
+.customize .container .cartItems{
+  color: white;
+  font-family: var(---font-color-one);
+  width: 20%;
+  height: 85vh;
+  padding-top: 20px;
+  overflow: scroll;
+
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  text-align: center;
+}
+.customize .container .cartItems .itemName{
+  width: 100%;
+  height: 40px;
+ border-radius: 4px;
+  align-content: center;
+}
+.customize .container .cartItems p{
+  width: 100%;
+  height: 40px;
+  box-shadow: 0px 0px 2px #ccc;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin-top: 3px;
+}
+.customize .container .cartItems p img{
+  width: 60px;
+  height: 100%;
+}
+
+.customize .container .finalProduct{
+  width: 80%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  justify-content: center;
+  color: white;
+  font-family: var(---font-color-one);
+  flex-direction: column;
+  position: relative;
+  margin-top: 20px;
+  text-shadow: 2px 2px 5px black;
+}
+
+
+
+.customize .container .finalProduct .product{
+  width: 75%;
+  min-height: 50vh;
+  /* background-color: yellow; */
+  box-shadow: 3px 3px 15px black;
+  gap: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 20px;
+}
+.customize .container .finalProduct .product h3{
+  color: #ccc;
+  text-align: center;
+  /* margin-top: 50%; */
+}
+.customize .container .finalProduct .product .productInfo{
+  width: 100px;
+  height: 100px;
+  box-shadow: 2px 2px 1px black;
+  border-radius: 9px;
+  color: white;
+  align-content: center;
+  position: relative;
+  text-align: center;
+  padding: 2px;
+
+}
+.customize .container .finalProduct .product .productInfo button{
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background: none;
+  border: none;
+  color: #e20b0b;
+  text-shadow: 0px 0px 10px black;
+  font-size: 20px;
+}
+.customize .container .finalProduct .product .productInfo img{
+  width: 100%;
+  border-radius: 9px;
+  height: 80%;
+} 
+
+.customize .container .finalProduct span{
+  color: yellow;
+}
+
+
+.book{
+  width: 100vw;
+  min-height: 100vh;
+  font-family: var(---font-color-one);
+  padding: 10px;
+  padding-bottom: 100px;
+  /* justify-content: center; */
+}
+.book .container{
+  padding: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 20px;
+}
+.book .bookProduct{
+  width: 350px;
+  height: 200px;
+  background-color: red;
+  box-shadow: 2px 2px 5px black;
+  border-radius: 9px;
+  overflow: hidden;
+  
+}
+.book .bookProduct img{
+  width: 100%;
+  height: 100%;
+  transition: 0.5s;
+}
+.book .bookProduct img:hover{
+  transform: scale(1.1);
+}
+.book button{
+margin-left: 70%;
+width: 70px;
+height: 40px;
+background-color: red;
+border: none;
+border-radius: 9px;
+color: white;
+box-shadow: 2px 2px 5px black;
+transition:0.1s
+}
+.book button:active{
+transform: scale(0.9);
+}
+
+.book>h1{
+  color: #ccc;
+  margin-top: 15%;
+  margin-left: 35%;
+ 
 }

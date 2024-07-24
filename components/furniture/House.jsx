@@ -10,7 +10,6 @@ function House() {
     let [icon, setIcon] = useState({})
 
     function buttonClick(itemsId) {
-        console.log(cart.House);
 
         let item = rooms.filter((i) => {
             return i.id == itemsId

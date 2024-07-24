@@ -16,7 +16,10 @@ function Nav() {
     <Link to={"/book"}>Book</Link>
     </div>
     <div className="cart">
-        <button>{totalCartCount}</button>
+        <button>
+        <i class="fa-solid fa-cart-shopping"></i>
+        <h6>{totalCartCount}</h6>
+        </button>
     </div>
    </nav>
   )
